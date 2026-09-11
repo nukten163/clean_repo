@@ -171,34 +171,34 @@ class GestureApp(ctk.CTk):
             return True
         return False
         
-    # def check_wolf_gesture(self, hand_landmarks_list):
-    #     if not hand_landmarks_list or len(hand_landmarks_list) < 2:
-    #         return False
+    def check_wolf_gesture(self, hand_landmarks_list):
+        if not hand_landmarks_list or len(hand_landmarks_list) < 2:
+            return False
             
-    #     for landmarks in hand_landmarks_list[:2]:
-    #         # MediaPipe landmarks: 8=Index tip, 6=Index pip, 12=Middle tip, 10=Middle pip
-    #         # 16=Ring tip, 14=Ring pip, 20=Pinky tip, 18=Pinky pip
-    #         index_tip_y = landmarks[8].y
-    #         index_pip_y = landmarks[6].y
+        for landmarks in hand_landmarks_list[:2]:
+            # MediaPipe landmarks: 8=Index tip, 6=Index pip, 12=Middle tip, 10=Middle pip
+            # 16=Ring tip, 14=Ring pip, 20=Pinky tip, 18=Pinky pip
+            index_tip_y = landmarks[8].y
+            index_pip_y = landmarks[6].y
             
-    #         middle_tip_y = landmarks[12].y
-    #         middle_pip_y = landmarks[10].y
+            middle_tip_y = landmarks[12].y
+            middle_pip_y = landmarks[10].y
             
-    #         ring_tip_y = landmarks[16].y
-    #         ring_pip_y = landmarks[14].y
+            ring_tip_y = landmarks[16].y
+            ring_pip_y = landmarks[14].y
             
-    #         pinky_tip_y = landmarks[20].y
-    #         pinky_pip_y = landmarks[18].y
+            pinky_tip_y = landmarks[20].y
+            pinky_pip_y = landmarks[18].y
             
-    #         # Index must be UP (y is smaller)
-    #         if index_tip_y > index_pip_y:
-    #             return False
+            # Index must be UP (y is smaller)
+            if index_tip_y > index_pip_y:
+                return False
                 
-    #         # Middle, Ring, Pinky must be DOWN (y is larger than pip/mcp)
-    #         if middle_tip_y < middle_pip_y or ring_tip_y < ring_pip_y or pinky_tip_y < pinky_pip_y:
-    #             return False
+            # Middle, Ring, Pinky must be DOWN (y is larger than pip/mcp)
+            if middle_tip_y < middle_pip_y or ring_tip_y < ring_pip_y or pinky_tip_y < pinky_pip_y:
+                return False
                 
-    #     return True
+        return True
 
     def update_frame(self):
         ret, frame = self.vid.read()
